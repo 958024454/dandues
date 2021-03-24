@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p th:text="${user.name}"></p>
+    <div>
+        <table border="1">
+            <h1>历史党费</h1>
+            <tr>
+                <td>月份</td><td>金额</td><td>操作</td>
+            </tr>
+            <tr th:each="record:${records}">
+                <td th:text="${record.time}"></td>
+                <td th:text="${record.pay}"></td>
+                <td ><a th:href="@{details/}+${record.getId()}">查看</a></td>
+            </tr>
+        </table>
+    </div>
+    <div>
+            <h1>党费缴费</h1>
+        <table border="1">
+            <tr><td>时间</td><td>金额</td><td>查看</td><td>操作</td></tr>
+            <tr>
+                <td th:text="${record.time}"></td><td th:text="${record.pay}"></td><td><a th:href="@{/details/0}">详情</a></td>
+                <td><a th:href="@{/pay}"><button>已缴费</button></a></td></tr>
+        </table>
+    </div>
+</body>
+</html>

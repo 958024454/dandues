@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/login}" method="post">
+    <input name="no" type="text"><span th:text="${msg}"></span><br>
+    <input name="password" type="password"><br>
+    <input type="submit">
+</form>
+<div>
+    <a th:href="@{/export}"><button>导出</button></a>
+</div>
+</body>
+</html>

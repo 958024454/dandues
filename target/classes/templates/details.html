@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1><span th:text="${user.name}"></span>党费详情</h1>
+<table border="1">
+    <tr><td>应纳税所得额</td>
+        <td>税率</td>
+        <td>速算扣除数</td>
+        <td>个人所得税(工资扣税)</td>
+        <td>党费基数</td>
+        <td>缴纳比例</td>
+        <td>每月应交党费</td>
+        <td>本年应缴</td></tr>
+    <tr>
+        <td th:text="${record.b1}"></td>
+        <td th:text="${record.b2}"></td>
+        <td th:text="${record.b3}"></td>
+        <td th:text="${record.b4}"></td>
+        <td th:text="${record.b5}"></td>
+        <td th:text="${record.b6}"></td>
+        <td th:text="${record.b7}"></td>
+        <td th:text="${record.pay}"></td>
+    </tr>
+</table>
+</body>
+</html>

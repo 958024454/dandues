@@ -1,0 +1,95 @@
+@media screen and (min-width:992px) {
+				.topbar {
+					width: 100%;
+					height: 250px;
+					background-color: rgba(223, 0, 2, 0.95);
+					display: flex;
+					justify-content:center;
+					align-items:Center;
+				}
+		
+				.title {
+					color: #fff;
+					font-size: 1.7em;
+				}
+		
+				.login {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					
+				}
+		
+				ul {
+					margin: 0;
+					padding: 0;
+					list-style: none;
+					width: 10000px;
+				}
+				
+				.btnclick{
+					width: 50px;
+					height: 30px;
+					justify-content: center;
+					margin: 5px;
+				}
+		
+				.navitem {
+					margin: 10px 5px;
+					padding: 0;
+					width: 120px;
+					height: 30px;
+					display: block;
+					float: left;
+					margin-right: 5px;
+					display: flex;
+					justify-content: center;
+					align-items: cneter;
+					background-color: rgba(223, 0, 2, 0.95);
+				}
+		
+				#img_bag {
+					height: 80px;
+					margin: 0 auto;
+				}
+		
+				#img_bag a {
+					float: left;
+					width: 350px;
+					display: block;
+					height: 10px;
+					font-weight: bold;
+				}
+		
+				#img_bag #img {
+					width: 100%;
+					height: 50px;
+					background: #fff;
+					overflow: hidden;
+					float: left
+				}
+		
+				#scrollBar {
+					width: 100%;
+					height: 10px;
+					background: #fff;
+					margin: 0 auto;
+					position: relative
+				}
+		
+				#scroll {
+					width: 110px;
+					height: 5px;
+					background-color: rgba(223, 0, 2, 0.95);
+					cursor: pointer;
+					position: absolute;
+				}
+				.table th, .table td {
+				　　text-align: center;
+				　　}
+		
+			}
+		
+			@media screen and (max-width:768px) {
+				
+			}

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>党费模块</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<script src="/js/jquery-3.5.1.min.js"></script>
+		<link href="/bootstrap-3.3.7/dist/css/bootstrap.css" rel="stylesheet">
+
+	</head>
+	<style>
+		#container {
+			/*固定网页框架*/
+			margin: 0px auto;
+			/*使整个页面居中*/
+			width: 100%;
+			/*宽度*/
+			padding: 0px;
+			text-align: center;
+		}
+
+		#top {
+			border: 0px #006600 solid;
+			height: 40px;
+
+			font-size: 20px;
+		}
+
+		#top-right {
+			border: 0px #006600 solid;
+			height: 40px;
+			font-size: 20px;
+			float: right;
+		}
+
+		#top-left {
+			border: 0px #006600 solid;
+			height: 40px;
+			font-size: 30px;
+			float: left;
+			font-weight: bold;
+		}
+
+		#banner {
+			border: 1px #000099 solid;
+			height: 300px;
+			font-size: 20px;
+			width: 100%;
+			float: center;
+			background: #fa1500;
+		}
+
+		#position {
+			border: 0px #000099 solid;
+			height: 40px;
+			font-size: 20px;
+			font-weight: bold;
+			width: 100%;
+			text-align: left;
+			color: #eb301f;
+		}
+
+		#tip {
+			border: 1px #000099 solid;
+			height: 220px;
+			font-size: 15px;
+			width: 100%;
+			float: center;
+
+		}
+
+		#img_bag {
+			height: 90px;
+			margin: 0 auto;
+			float: center;
+		}
+
+		#img_bag a {
+			float: left;
+			width: 350px;
+			display: block;
+			height: 10px;
+			font-weight: bold;
+		}
+
+		#img_bag #img {
+			width: 100%;
+			height: 50px;
+			background: #fff;
+			overflow: hidden;
+			float: left
+		}
+
+		ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			width: 10000px;
+		}
+
+		.btnclick {
+			width: 50px;
+			height: 30px;
+			justify-content: center;
+			margin: 5px;
+		}
+
+		.navitem {
+			margin: 10px 5px;
+			padding: 0;
+			width: 120px;
+			height: 30px;
+			display: block;
+			float: left;
+			margin-right: 5px;
+			display: flex;
+			justify-content: center;
+			align-items: cneter;
+			background-color: rgba(223, 0, 2, 0.95);
+		}
+	</style>
+	</head>
+	<body>
+		<div id="container">
+			<div id="top">
+				<div id="top-left">党费模块</div>
+				<div id="top-right">
+					<table border="0px">
+						<tr>
+							<td>首页</td>
+							<td>&nbsp;</td>
+							<td>入党事宜</td>
+							<td>&nbsp;</td>
+							<td>登录</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div id="banner">
+				<div class="row topbar col-md-12">
+					<div class="col-md-2 col-xs-2 col-sm-4 justify-content-center">
+						<img src="/img/logo.jpg" />
+					</div>
+					<div class="col-md-8 col-xs-8 col-sm-6">
+						<span class="title">重庆师范大学<br />计算机与信息科学学院党建平台</span>
+					</div>
+				</div>
+			</div>	
+			<h3 style="float: left;">所有未缴费</h3>
+			<div class="row panel panel-default col-xs-12 col-md-12">
+				<div class="panel-body col-xs-12 col-md-12">
+					<table class="bTable table table-striped table-bordered table-hover table-condensed text-center">
+						<thead>
+						<tr class="">
+							<th>缴纳人</th>
+							<th>时间段</th>
+							<th>费用</th>
+							<th>状态</th>
+
+							<th>详情</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr  th:each="record:${records}">
+							<td th:text="${user.name}">李XX</td>
+							<td th:text="${record.time}"></td>
+							<td th:text="${record.pay}"></td>
+							<td th:if="${record.is_pay}eq 1">已缴纳</td>
+							<td th:if="${record.is_pay}eq 0"><a th:href="@{/pay/}+${record.getId()}">缴纳</a></td>
+
+							<td><a th:href="@{details/}+${record.getId()}">查看详情</a></td>
+						</tr>
+						</tbody>
+					</table>
+					<div class="page">
+						<span>上一页</span>
+						<a href="#">1</a>
+						<a href="#">2</a>
+						<a href="#">3</a>
+						<a href="#">4</a>
+						<a href="#">5</a>
+						<a href="#">6</a>
+						<a href="#">7</a>
+						<span>下一页</span>
+					</div>
+				</div>
+			</div>
+	</body>
+</html>

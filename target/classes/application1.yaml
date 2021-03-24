@@ -1,0 +1,19 @@
+
+spring:
+  datasource:
+    username: dandues
+    password: zxczxc
+    url: jdbc:mysql://localhost:3306/dandues?serverTimezone=UTC&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.ht.dandues.pojo
+  logTmpl:
+server:
+  port: 8082
+

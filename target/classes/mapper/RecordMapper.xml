@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ht.dandues.Mapper.RecordMapper">
+    <select id="queryRecordByUid"  resultType="Record">
+        select * from record where uid=#{uid}
+    </select>
+    <insert id="insertRecord" parameterType="Record">
+        insert into record (uid,time,b1,b2,b3,b4,b5,b6,b7,pay)
+        values (#{uid},#{time},#{b1},#{b2},#{b3},#{b4},#{b5},#{b6},#{b7},#{pay})
+    </insert>
+    <select id="getTime"  resultType="String">
+        select time from record where time='${time}' and uid=${uid}
+    </select>
+    <select id="queryRecordById"  resultType="Record">
+        select * from record where id=#{id}
+    </select>
+    <update id="payRecord" >
+        update record set is_pay = 1 where id = #{id}
+    </update>
+    <select id="getNoPayRecords" resultType="Record">
+        select * from record where uid = ${uid} and is_pay=0
+    </select>
+</mapper>

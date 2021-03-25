@@ -162,9 +162,9 @@
 						</thead>
 						<tbody>
 						<tr  th:each="record:${records}">
-							<td th:text="${user.name}">李XX</td>
-							<td th:text="${record.time}"></td>
-							<td th:text="${record.pay}"></td>
+							<td th:text="${user.name}"></td>
+							<td th:text="${record.virtual.time}"></td>
+							<td th:text="${record.b7}"></td>
 							<td th:if="${record.is_pay}eq 1">已缴纳</td>
 							<td th:if="${record.is_pay}eq 0"><a th:href="@{/pay/}+${record.getId()}">缴纳</a></td>
 

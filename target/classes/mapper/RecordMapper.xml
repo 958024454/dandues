@@ -2,23 +2,49 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ht.dandues.Mapper.RecordMapper">
-    <select id="queryRecordByUid"  resultType="Record">
-        select * from record where uid=#{uid}
+    <select id="queryRecordByUid"  resultMap="recordMap">
+        select * from record left join `virtual` on record.vid=virtual.id where record.uid=#{uid}
     </select>
     <insert id="insertRecord" parameterType="Record">
-        insert into record (uid,time,b1,b2,b3,b4,b5,b6,b7,pay)
-        values (#{uid},#{time},#{b1},#{b2},#{b3},#{b4},#{b5},#{b6},#{b7},#{pay})
+        insert into record (uid,vid,b1,b2,b3,b4,b5,b6,b7,pay)
+        values (#{uid},#{vid},#{b1},#{b2},#{b3},#{b4},#{b5},#{b6},#{b7},#{pay})
     </insert>
     <select id="getTime"  resultType="String">
-        select time from record where time='${time}' and uid=${uid}
+        select time from record where time='${time}' uid=${uid}
     </select>
-    <select id="queryRecordById"  resultType="Record">
-        select * from record where id=#{id}
+    <select id="queryRecordById"  resultMap="recordMap">
+        select * from record left join `virtual` on record.vid=virtual.id where record.id=#{id}
     </select>
     <update id="payRecord" >
         update record set is_pay = 1 where id = #{id}
     </update>
-    <select id="getNoPayRecords" resultType="Record">
-        select * from record where uid = ${uid} and is_pay=0
+    <select id="getNoPayRecords" resultMap="recordMap">
+        select * from record left join `virtual` on record.vid=virtual.id where record.uid = ${uid} and is_pay=0
     </select>
+    <resultMap type="com.ht.dandues.pojo.Record" id="recordMap">
+        <id property="id" column="id"/>
+        <result property="uid" column="uid" />
+        <result property="b1" column="b1"/>
+        <result property="b2" column="b2"/>
+        <result property="b3" column="b3"/>
+        <result property="b4" column="b4"/>
+        <result property="b5" column="b5"/>
+        <result property="b6" column="b6"/>
+        <result property="b7" column="b7"/>
+        <result property="is_pay" column="is_pay"/>
+        <association property="virtual" javaType="com.ht.dandues.pojo.Virtual">
+            <id property="id" column="id(1)"/>
+            <result property="uid" column="uid"/>
+            <result property="time" column="time"/>
+            <result property="a1" column="a1"/>
+            <result property="a2" column="a2"/>
+            <result property="a3" column="a3"/>
+            <result property="a4" column="a4"/>
+            <result property="a5" column="a5"/>
+            <result property="a6" column="a6"/>
+            <result property="a7" column="a7"/>
+            <result property="a8" column="a8"/>
+            <result property="a9" column="a9"/>
+        </association>
+    </resultMap>
 </mapper>

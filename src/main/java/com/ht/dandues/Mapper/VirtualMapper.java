@@ -5,5 +5,5 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface VirtualMapper {
-    Virtual queryVirtualByUid(int uid);
+    Virtual queryVirtualByUid(int uid,String time);
 }

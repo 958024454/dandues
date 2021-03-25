@@ -24,12 +24,10 @@ public class TimingTask {
     UserService us;
     @Scheduled(cron="0/10 * * * * ?")
     private void month(){
+        String time=new SimpleDateFormat("yyyy-MM").format(new Date().getTime())+"";
         for (int i: us.queryUserAll()){
-            if (!rd.queryTime(new SimpleDateFormat("yyyy-MM").format(new Date().getTime())+"", i)){
-                rd.addRecord(rd.getAmount(i));
+                rd.addRecord(rd.getAmount(i,time+""));
                 System.out.println("uid:"+i+"   添加记录");
-            }
-
         }
     }
 }

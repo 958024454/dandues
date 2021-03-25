@@ -48,9 +48,6 @@ public class ApiController {
         User user = (User)session.getAttribute("user");
         md.addAttribute(user);
         md.addAttribute("records",us.queryRecordsByUid(user.getId()));
-        md.addAttribute("record",us.getAmount(user.getId()));
-        boolean t = us.queryTime(new SimpleDateFormat("yyyy").format(new Date().getTime()) + "",user.getId());
-        md.addAttribute("check",t);
         return "dan/index";
     }
     @RequestMapping("/pay/{id}")

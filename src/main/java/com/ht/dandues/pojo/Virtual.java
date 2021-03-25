@@ -19,4 +19,5 @@ public class Virtual {
     private double a7;
     private double a8;
     private double a9;
+    private String time;
 }

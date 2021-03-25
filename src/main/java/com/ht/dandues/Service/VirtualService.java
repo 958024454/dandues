@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 public class VirtualService {
     @Autowired
     VirtualMapper vm;
-    public Virtual queryVirtual(int uid){
-        return vm.queryVirtualByUid(uid);
+    public Virtual queryVirtual(int uid,String time){
+        return vm.queryVirtualByUid(uid,time);
     }
 
 }

@@ -23,8 +23,8 @@ public class RecordService {
     public List<Record> queryRecordsByUid(int uid){
         return rm.queryRecordByUid(uid);
     }
-    public Record getAmount(int uid){
-        Virtual virtual = vs.queryVirtual(uid);
+    public Record getAmount(int uid,String time){
+        Virtual virtual = vs.queryVirtual(uid,time);
         //a1 -> 个人所得税
         double a1=virtual.getA1()+virtual.getA2()+virtual.getA3()+virtual.getA4()-virtual.getA5()-virtual.getA6()-virtual.getA7()-virtual.getA8()-virtual.getA9();
         a1=a1/12-5000;
@@ -65,23 +65,19 @@ public class RecordService {
         else if(base<=10000) b1=0.015;
         else b1=0.02;
         DecimalFormat df = new DecimalFormat("#.0");
-        return new Record(0,uid,a1,a2,a3,a4,base,b1,base*b1,new SimpleDateFormat("yyyy-MM").format(new Date().getTime())+"",new BigDecimal(base*b1*12).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue(),0);
+        return new Record(0,uid,a1,a2,a3,a4,base,b1,base*b1, virtual, 0);
     }
     public int addRecord(Record record){
-        if (rm.getTime(record.getTime(),record.getUid())!=null) return 0;
         if (rm.insertRecord(record)!=0) return 1;
         return 0;
     }
-    public boolean queryTime(String time,int uid){
-        if(rm.getTime(time,uid)==null) return false;
-        return true;
-    }
+
     public Record getRecord(int id){
-        if(id==0){
-            Subject subject = SecurityUtils.getSubject();
-            User user = (User) subject.getSession().getAttribute("user");
-            return getAmount(user.getId());
-        }
+//        if(id==0){
+//            Subject subject = SecurityUtils.getSubject();
+//            User user = (User) subject.getSession().getAttribute("user");
+//            return getAmount(user.getId());
+//        }
 
         return rm.queryRecordById(id);
     }

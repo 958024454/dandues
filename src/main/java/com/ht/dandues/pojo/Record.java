@@ -17,7 +17,6 @@ public class Record {
     private double b5;
     private double b6;
     private double b7;
-    private String time;
-    private double pay;
+    private Virtual virtual;
     private int is_pay;
 }

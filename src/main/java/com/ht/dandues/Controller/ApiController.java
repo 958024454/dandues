@@ -43,6 +43,7 @@ public class ApiController {
 //        md.addAttribute("check",t);
 //        return "now";
 //    }
+
     @RequestMapping("/danindex")
     public String now( Model md){
         User user = (User)session.getAttribute("user");

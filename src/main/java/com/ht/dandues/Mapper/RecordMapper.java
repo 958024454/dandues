@@ -13,4 +13,5 @@ public interface RecordMapper {
     Record queryRecordById(int id);
     Integer payRecord(int id);
     List<Record> getNoPayRecords(int uid);
+    List<Record> queryRecordByTime (String time);
 }

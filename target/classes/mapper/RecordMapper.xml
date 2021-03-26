@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ht.dandues.Mapper.RecordMapper">
     <select id="queryRecordByUid"  resultMap="recordMap">
-        select * from record left join `virtual` on record.vid=virtual.id where record.uid=#{uid}
+        select * from record left join `virtual` on record.vid=virtual.id where record.uid=#{uid} order by record.id desc
     </select>
     <insert id="insertRecord" parameterType="Record">
         insert into record (uid,vid,b1,b2,b3,b4,b5,b6,b7,pay)
@@ -19,7 +19,10 @@
         update record set is_pay = 1 where id = #{id}
     </update>
     <select id="getNoPayRecords" resultMap="recordMap">
-        select * from record left join `virtual` on record.vid=virtual.id where record.uid = ${uid} and is_pay=0
+        select * from record left join `virtual` on record.vid=virtual.id where record.uid = ${uid} and is_pay=0 order by record.id desc
+    </select>
+    <select id="queryRecordByTime" resultMap="recordMap">
+        select * from record left join `virtual` on record.vid=virtual.id where virtual.time like '${time}%' order by record.id asc
     </select>
     <resultMap type="com.ht.dandues.pojo.Record" id="recordMap">
         <id property="id" column="id"/>
@@ -33,7 +36,7 @@
         <result property="b7" column="b7"/>
         <result property="is_pay" column="is_pay"/>
         <association property="virtual" javaType="com.ht.dandues.pojo.Virtual">
-            <id property="id" column="id(1)"/>
+            <result property="id" column="vid"/>
             <result property="uid" column="uid"/>
             <result property="time" column="time"/>
             <result property="a1" column="a1"/>

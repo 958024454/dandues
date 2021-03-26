@@ -93,4 +93,7 @@ public class RecordService {
     public List<Record> getNoPayRecords(int uid){
         return rm.getNoPayRecords(uid);
     }
+    public List<Record> getRecordByTime(String time){
+        return rm.queryRecordByTime(time);
+    }
 }

@@ -22,6 +22,7 @@ public class ShiroConfig{
         filterMap.put("/details","authc");
         filterMap.put("/now","authc");
         filterMap.put("/dandues","authc");
+        filterMap.put("/admin/*","authc");
         bean.setFilterChainDefinitionMap(filterMap);
         return bean;
     }

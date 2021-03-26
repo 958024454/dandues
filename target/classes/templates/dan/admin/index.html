@@ -154,30 +154,35 @@
 			<h2 style="float: left;">缴纳党费</h2>
 			
 			<div class="row panel panel-default col-xs-12 col-md-12">
-				<div class="panel-body col-xs-12 col-md-12">
-					<table class="bTable table table-striped table-bordered table-hover table-condensed text-center">
-						<thead>
-							
-							<tr >
-								<th style=";">时间段</th>
-								<th>XXX</th>
-								<th>XXX</th>
-								<th>XXX</th>								
-							</tr>
-						</thead>
-						<tbody>
-							<tr class="" id="">
-								<td>xxx</td>
-								<td>xxx</td>
-								<td>xxx</td>
-								<td>xxx</td>
-							</tr>							
-						</tbody>
-					</table>
-					<div id="jf"><img src="/img/logo.jpg" />
-					<br>二维码图片
-						</div>
+				<div>
+					<form th:href="@{/admin}" method="get">
+						<input type="month" id="myMonth"  name="time">
+						<input type="submit" value="查询">
+					</form>
 				</div>
+				<table class="bTable table table-striped table-bordered table-hover table-condensed text-center">
+					<thead>
+					<tr class="">
+						<th>缴纳人</th>
+						<th>时间段</th>
+						<th>费用</th>
+						<th>状态</th>
+						<th>详情</th>
+					</tr>
+					</thead>
+					<tbody>
+
+					<tr  th:each="record:${records}">
+						<td th:text="${user.name}"></td>
+						<td th:text="${record.virtual.time}"></td>
+						<td th:text="${record.b7}"></td>
+						<td th:if="${record.is_pay}eq 1">已缴纳</td>
+						<td th:if="${record.is_pay}eq 0">未缴纳</td>
+						<td><a th:href="@{details/}+${record.getId()}">查看详情</a></td>
+					</tr>
+					</tbody>
+				</table>
 			</div>
+		</div>
 	</body>
 </html>
